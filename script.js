@@ -1,31 +1,27 @@
-const video = document.getElementById("camera");
-const canvas = document.getElementById("snapshot");
-const captureButton = document.getElementById("capture");
-const downloadButton = document.getElementById("download");
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const snap = document.getElementById("snap");
 const context = canvas.getContext("2d");
 
-// Aktifkan kamera
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream => {
+// Pastikan ukuran canvas sesuai video
+canvas.width = 640;
+canvas.height = 480;
+
+// Fungsi untuk minta izin kamera
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-  })
-  .catch(err => {
-    alert("Gagal mengakses kamera 😢: " + err);
-  });
+  } catch (error) {
+    alert("⚠️ Gagal mengakses kamera. Pastikan sudah diizinkan di browser.");
+    console.error("Error akses kamera:", error);
+  }
+}
 
-// Ambil foto
-captureButton.addEventListener("click", () => {
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+// Saat tombol 'Take Photo' ditekan
+snap.addEventListener("click", () => {
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  downloadButton.disabled = false;
 });
 
-// Download hasil foto
-downloadButton.addEventListener("click", () => {
-  const image = canvas.toDataURL("image/png");
-  const link = document.createElement("a");
-  link.href = image;
-  link.download = "princess_photobooth.png";
-  link.click();
-});
+// Jalankan kamera
+startCamera();
