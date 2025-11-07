@@ -1,0 +1,57 @@
+body {
+  background: linear-gradient(135deg, #ffd6ec, #d6e1ff);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #ff69b4;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+video, canvas {
+  width: 320px;
+  height: 240px;
+  border-radius: 15px;
+  border: 3px solid #ffc4dd;
+  object-fit: cover;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+button {
+  background: #ffb6c1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  margin: 5px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff9ab3;
+}
+
+.note {
+  margin-top: 10px;
+  color: #888;
+  font-size: 12px;
+}
